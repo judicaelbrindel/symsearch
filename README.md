@@ -150,8 +150,8 @@ At depth d=3, no statistically significant difference in compressibility was fou
   title     = {SymSearch: Symbolic Search for Physical Constants},
   year      = {2026},
   publisher = {GitHub},
-  url       = {https://github.com/[your-username]/symsearch}
-}
+  url       = doi = {10.5281/zenodo.18792523},
+url = {https://github.com/judicaelbrindel/symsearch}
 ```
 
 ---
