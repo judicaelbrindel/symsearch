@@ -5,7 +5,7 @@ SymSearch — Symbolic Search for Physical Constants
 
 Author  : Judicael Brindel, Independent Researcher, Cotonou, Benin
 ORCID   : 0009-0007-4590-9874
-GitHub  : https://github.com/[your-username]/symsearch
+GitHub  : https://github.com/judicaelbrindel/symsearch
 License : MIT
 
 Description:
@@ -22,7 +22,7 @@ Usage:
 
 Citation:
     Brindel, J. (2026). SymSearch: Symbolic Search for Physical Constants.
-    Zenodo. https://doi.org/[DOI]
+    Zenodo. https://doi.org/10.5281/zenodo.18805643
 
 Computational assistance: Claude (Anthropic)
 =======================================================================
