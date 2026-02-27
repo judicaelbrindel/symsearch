@@ -94,7 +94,7 @@ Lower S = simpler expression. Weights fixed before any computation.
 ## Installation
 
 ```bash
-git clone https://github.com/[your-username]/symsearch
+git clone https://github.com/judicaelbrindel/symsearch
 cd symsearch
 pip install -r requirements.txt
 python search.py
