@@ -22,7 +22,7 @@ Usage:
 
 Citation:
     Brindel, J. (2026). SymSearch: Symbolic Search for Physical Constants.
-    Zenodo. https://doi.org/10.5281/zenodo.18805643
+    Zenodo. https://doi.org/10.5281/zenodo.18792523
 
 Computational assistance: Claude (Anthropic)
 =======================================================================
@@ -278,33 +278,36 @@ def save_catalogue(cat):
         json.dump(cat, f, indent=2)
 
 def auto_log_catalogue(target, sigma, n_valid, n_matches, p_empirical, top_results, label=None):
-    """Automatically log result to catalogue if p < threshold."""
+    """Automatically log top 3 results to catalogue if p < threshold."""
     if p_empirical == 0 or p_empirical >= CATALOGUE_P_THRESHOLD:
         return False
     if not top_results:
         return False
     cat = load_catalogue()
-    best = top_results[0]
-    entry = {
-        "date": time.strftime("%Y-%m-%d"),
-        "label": label or f"target_{target}",
-        "target_value": target,
-        "sigma": sigma,
-        "formula": best[3] if len(best) > 3 else str(best),
-        "formula_value": best[2] if len(best) > 2 else None,
-        "S": best[1] if len(best) > 1 else None,
-        "p_empirical": round(p_empirical, 8),
-        "n_valid": n_valid,
-        "status": "candidate",
-        "author": "Judicael Brindel",
-    }
-    existing = [e for e in cat["entries"]
-                if e.get("target_value") == target and e.get("formula") == entry["formula"]]
-    if existing:
-        return False
-    cat["entries"].append(entry)
-    save_catalogue(cat)
-    return True
+    logged_count = 0
+    for candidate in top_results[:3]:
+        entry = {
+            "date": time.strftime("%Y-%m-%d"),
+            "label": label or f"target_{target}",
+            "target_value": target,
+            "sigma": sigma,
+            "formula": candidate[3] if len(candidate) > 3 else str(candidate),
+            "formula_value": candidate[2] if len(candidate) > 2 else None,
+            "S": candidate[1] if len(candidate) > 1 else None,
+            "p_empirical": round(p_empirical, 8),
+            "n_valid": n_valid,
+            "status": "candidate",
+            "author": "Judicael Brindel",
+        }
+        existing = [e for e in cat["entries"]
+                    if e.get("target_value") == target and e.get("formula") == entry["formula"]]
+        if existing:
+            continue
+        cat["entries"].append(entry)
+        logged_count += 1
+    if logged_count > 0:
+        save_catalogue(cat)
+    return logged_count > 0
 
 # ===================================================================
 # CORE SEARCH FUNCTION
