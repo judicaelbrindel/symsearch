@@ -220,23 +220,6 @@ def test_n_valid_positive():
 # TEST 9 — inverse search works for a known formula
 # ===================================================================
 
-def test_inverse_search_pi_OLD():
-    """
-    The formula 'pi' should identify math.pi as the closest constant.
-    """
-    results = inverse_search('pi', top_n=5, rel_tol=0.01)
-    assert len(results) > 0, "inverse_search('pi') should return results"
-    # The closest match should be pi itself or a pi-related constant
-    values = [r[1] for r in results]
-    assert any(abs(v - math.pi) / math.pi < 0.001 for v in values), (
-        "inverse_search('pi') should find a value close to pi"
-    )
-
-
-# ===================================================================
-# TEST 10 — safe_eval_formula handles errors gracefully
-# ===================================================================
-
 def test_safe_eval_formula_valid():
     """safe_eval_formula should evaluate 'pi' correctly."""
     val = safe_eval_formula('pi')
