@@ -83,4 +83,21 @@ SymSearch performs a stochastic bounded search, not an exhaustive one. At depth 
 
 The author thanks the open-source community for tools enabling independent research. Computational assistance for implementation and formal verification was provided by Claude (Anthropic).
 
+## AI usage disclosure
+
+The development of SymSearch and the preparation of this manuscript
+received computational assistance from generative AI tools.
+
+- **Tool identification**: Claude (Anthropic), versions 3.5 Sonnet and 3.7 Sonnet,
+  were employed for code generation, refactoring assistance, and editorial review
+  of the manuscript text.
+- **Scope of assistance**: The AI assisted in generating initial code scaffolding,
+  optimizing performance, structuring the complexity metric `S(e)`, and drafting
+  sections of the documentation and this paper. All architectural decisions and
+  design choices were made by the author.
+- **Human verification confirmation**: The author has thoroughly reviewed, modified,
+  and validated all AI-generated content. The author assumes full responsibility
+  for the accuracy, originality, and licensing compliance of the submitted
+  materials.
+
 # References
